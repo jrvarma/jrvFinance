@@ -1,0 +1,18 @@
+Package: jrvFinance
+Title: Basic Finance; NPV/IRR/annuities/bond-pricing; Black Scholes
+Version: 1.03
+Authors@R: as.person("Jayanth Varma <jrvarma@iimahd.ernet.in>
+    [aut, cre]")
+Description: This implements the basic financial analysis
+    functions similar to (but not identical to) what
+    is available in most spreadsheet software. This
+    includes finding the IRR and NPV of regularly
+    spaced cash flows and annuities. Bond pricing and
+    YTM calculations are included. In addition, Black
+    Scholes option pricing and Greeks are also
+    provided.
+Depends: R (>= 3.0.0)
+License: GPL (>=2)
+LazyData: true
+VignetteBuilder: knitr
+Suggests: knitr
