@@ -16,3 +16,5 @@ License: GPL (>=2)
 LazyData: true
 VignetteBuilder: knitr
 Suggests: knitr
+URL: http://github.com/jrvarma/jrvFinance
+BugReports: http://github.com/jrvarma/jrvFinance/issues

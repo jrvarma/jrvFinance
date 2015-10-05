@@ -15,8 +15,7 @@
 ##' \code{\link{annuity.pv}}, \code{\link{bond.price}}, \code{\link{bond.yield}},
 ##' \code{\link{GenBS}}, \code{\link{GenBSImplied}}
 ##' 
-##' For more details, see the
-##' \link[=../doc/jrvFinance-demo.html]{vignette}
+##' For more details, see the vignette
 ##' 
 ##' @name jrvFinance-package
 ##' @aliases jrvFinance-package jrvFinance

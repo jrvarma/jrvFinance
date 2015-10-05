@@ -51,6 +51,7 @@
 ##' \item{extra$putProb}{the (risk neutral) probability that the put will be exercised = Nminusd2}
 ##'
 ##' @export
+##' @importFrom stats pnorm dnorm
 GenBS <- function(s, X, r, Sigma, t, div_yield = 0){
   g = r - div_yield ## the growth rate of the asset price
   d1 <- (log(s / X) + (g + Sigma*Sigma / 2) * t) / (Sigma * sqrt(t))
@@ -111,6 +112,7 @@ GenBS <- function(s, X, r, Sigma, t, div_yield = 0){
 ##' @inheritParams GenBS
 ##'
 ##' @export
+##' @importFrom stats uniroot
 GenBSImplied <- function(s, X, r, price, t, div_yield, PutOpt=FALSE,
                          toler=1e-6, max.iter=100, convergence=1e-8){
   ## discount the exercise price to eliminate r

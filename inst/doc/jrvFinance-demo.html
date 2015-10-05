@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Jayanth R. Varma" />
+
+<meta name="date" content="2015-10-05" />
+
+<title>jrvFinance Usage</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0A%7D%0Apre%20%7B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div id="header">
+<h1 class="title">jrvFinance Usage</h1>
+<h4 class="author"><em>Jayanth R. Varma</em></h4>
+<h4 class="date"><em>2015-10-05</em></h4>
+</div>
+
+
+<div id="contents" class="section level1">
+<h1>Contents</h1>
+<ul>
+<li><p><a href="#intro">Introduction</a></p></li>
+<li><p><a href="#npv">Net Present Value (NPV) and Internal Rate of Return (IRR)</a></p></li>
+<li><p><a href="#dur">Duration of general cash flows</a></p></li>
+<li><p><a href="#annuity">Annuity functions</a></p></li>
+<li><p><a href="#bond">Bond Pricing</a></p></li>
+<li><p><a href="#gbs">(Generalized) Black Scholes Formulas</a></p></li>
+<li><p><a href="#util">Utility functions</a></p></li>
+</ul>
+</div>
+<div id="introduction" class="section level1">
+<h1><a name="intro"></a>Introduction</h1>
+<p>The <code>jrvFinance</code> R package implements the basic financial analysis functions similar to (but not identical to) what is available in most spreadsheet software. This includes finding the IRR and NPV of regularly spaced cash flows and annuities. Bond pricing and YTM calculations are included. In addition, Black Scholes option pricing and Greeks are also provided.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(jrvFinance)</code></pre></div>
+</div>
+<div id="npv-and-irr" class="section level1">
+<h1><a name="npv"></a>NPV and IRR</h1>
+<p>Find Net Present Value (NPV) at 5% of cash flows of 100, 250 and 300 in years 1, 2 and 3 respectively:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">npv</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">250</span>,<span class="dv">300</span>), <span class="dt">rate=</span><span class="fl">5e-2</span>)</code></pre></div>
+<pre><code>## [1] 581.1467</code></pre>
+<p>Find NPV at 10% of cash flows of 1, 3 and 2 in years 0.3, 1.9 and 2.5 respectively (this is known in XNPV in spreadsheet software):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">npv</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="dt">rate=</span><span class="fl">10e-2</span>, <span class="dt">cf.t=</span><span class="kw">c</span>(<span class="fl">0.3</span>,<span class="fl">1.9</span>,<span class="fl">2.5</span>))</code></pre></div>
+<pre><code>## [1] 5.050866</code></pre>
+<p>Find the rate of interest (IRR) if a loan of 600 is repaid in two annual instalments of 300 and 400:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="kw">c</span>(-<span class="dv">600</span>,<span class="dv">300</span>,<span class="dv">400</span>))</code></pre></div>
+<pre><code>## [1] 0.1039126</code></pre>
+<p>Negative interest rates are handled without difficulty</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="kw">c</span>(-<span class="dv">600</span>,<span class="dv">100</span>,<span class="dv">400</span>))</code></pre></div>
+<pre><code>## [1] -0.09592852</code></pre>
+<p>Find the rate of interest if a loan of 450 is repaid by paying 100 after 0.3 years, 300 after 1.9 years and 200 after 2.5 years (this is known in XIRR in spreadsheet software)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="dt">cf=</span><span class="kw">c</span>(-<span class="dv">450</span>,<span class="dv">100</span>,<span class="dv">300</span>,<span class="dv">200</span>), <span class="dt">cf.t=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.3</span>,<span class="fl">1.9</span>,<span class="fl">2.5</span>)) </code></pre></div>
+<pre><code>## [1] 0.1746131</code></pre>
+<p>Find multiple IRRs by providing interval within which to search for the IRR:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>, -<span class="dv">230</span>, <span class="dv">132</span>), <span class="dt">interval =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.17</span>)) </code></pre></div>
+<pre><code>## [1] 0.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>, -<span class="dv">230</span>, <span class="dv">132</span>), <span class="dt">interval =</span> <span class="kw">c</span>(<span class="fl">0.17</span>, <span class="fl">0.50</span>)) </code></pre></div>
+<pre><code>## [1] 0.2</code></pre>
+<p>Find multiple IRRs by providing different guess values for the IRR:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>, -<span class="dv">230</span>, <span class="dv">132</span>), <span class="dt">r.guess =</span> <span class="dv">0</span>) </code></pre></div>
+<pre><code>## [1] 0.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">irr</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>, -<span class="dv">230</span>, <span class="dv">132</span>), <span class="dt">r.guess =</span> <span class="fl">0.5</span>) </code></pre></div>
+<pre><code>## [1] 0.2</code></pre>
+</div>
+<div id="duration-of-general-cash-flows" class="section level1">
+<h1><a name="dur"></a>Duration of general cash flows</h1>
+<p>There is a separate set of functions for computing duration for bonds. In this section, we look at the functions for computing duration of general sequence of cash flows.</p>
+<p>Find duration of a stream of cash flows of 100, 250 and 300 in years 1, 2 and 3 when the interest rate is 5%:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">duration</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">250</span>,<span class="dv">300</span>), <span class="dt">rate=</span><span class="fl">5e-2</span>)</code></pre></div>
+<pre><code>## [1] 2.282051</code></pre>
+<p>Find modified duration of same cash flows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">duration</span>(<span class="dt">cf=</span><span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">250</span>,<span class="dv">300</span>), <span class="dt">rate=</span><span class="fl">5e-2</span>, <span class="dt">modified=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 2.173382</code></pre>
+</div>
+<div id="annuity-functions" class="section level1">
+<h1><a name="annuity"></a>Annuity functions</h1>
+<p>Find the present value at 10% of 15 annual instalments of 1 each period:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.pv</span>(<span class="dt">rate=</span><span class="fl">10e-2</span>, <span class="dt">n.periods=</span><span class="dv">15</span>)</code></pre></div>
+<pre><code>## [1] 7.60608</code></pre>
+<p>Find present value at 10% of 15 annual instalments of 1 each period where the annuity starts immediately:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.pv</span>(<span class="dt">rate=</span><span class="fl">10e-2</span>, <span class="dt">n.periods=</span><span class="dv">15</span>, <span class="dt">immediate.start =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 8.366687</code></pre>
+<p>Find the present value at 7% of a perpetuity of 35 per annum :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.pv</span>(<span class="dt">rate=</span><span class="fl">7e-2</span>, <span class="dt">instalment =</span> <span class="dv">35</span>, <span class="dt">n.periods=</span><span class="ot">Inf</span>)</code></pre></div>
+<pre><code>## [1] 500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## or more simply
+<span class="kw">annuity.pv</span>(<span class="dt">rate=</span><span class="fl">7e-2</span>, <span class="dt">instalment =</span> <span class="dv">35</span>)</code></pre></div>
+<pre><code>## [1] 500</code></pre>
+<p>Consider an annuity of 360 monthly instalments (30 years) where each instalment is 450. Find the present value of the above annuity at 10% semi-annually compounded:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.pv</span>(<span class="dt">rate=</span><span class="fl">10e-2</span>, <span class="dt">instalment =</span> <span class="dv">450</span>, <span class="dt">n.periods=</span><span class="dv">360</span>, <span class="dt">cf.freq=</span><span class="dv">12</span>, <span class="dt">comp.freq=</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 52163.75</code></pre>
+<p>Find the semi-annually compounded rate if the above annuity has present value of 50,000:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.rate</span>(<span class="dt">pv=</span><span class="dv">50000</span>, <span class="dt">instalment =</span> <span class="dv">450</span>, <span class="dt">n.periods=</span><span class="dv">360</span>, <span class="dt">cf.freq=</span><span class="dv">12</span>, <span class="dt">comp.freq=</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 0.1052609</code></pre>
+<p>Negative interest rates are handled without difficulty:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.rate</span>(<span class="dt">pv=</span><span class="dv">250000</span>, <span class="dt">instalment =</span> <span class="dv">450</span>, <span class="dt">n.periods=</span><span class="dv">360</span>, <span class="dt">cf.freq=</span><span class="dv">12</span>, <span class="dt">comp.freq=</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] -0.02685041</code></pre>
+<p>Suppose a loan of 10,000 is to be repaid in 8 equal annual instalments and the interest rate is 9% annually compounded. Find the annual instalment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">annuity.instalment</span>(<span class="dt">rate=</span><span class="fl">9e-2</span>, <span class="dt">pv=</span><span class="dv">10000</span>, <span class="dt">n.periods=</span><span class="dv">8</span>)</code></pre></div>
+<pre><code>## [1] 1806.744</code></pre>
+<p>Breakup the 5th instalment of above annuity into its principal and interest components:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AIB &lt;-<span class="st"> </span><span class="kw">annuity.instalment.breakup</span>(<span class="dt">rate=</span><span class="fl">9e-2</span>, <span class="dt">pv=</span><span class="dv">10000</span>, <span class="dt">n.periods=</span><span class="dv">8</span>,
+                                  <span class="dt">period.no=</span><span class="dv">5</span>)
+<span class="co"># we use unlist to print the result more compactly</span>
+<span class="kw">unlist</span>(AIB)</code></pre></div>
+<pre><code>## opening.principal     interest.part    principal.part closing.principal 
+##         5853.3437          526.8009         1279.9428         4573.4009</code></pre>
+</div>
+<div id="bond-price-yield-and-duration" class="section level1">
+<h1><a name="bond"></a>Bond Price, Yield and Duration</h1>
+<p>Find price on 15 April 2012 of 8% bond maturing on 1 January 2022 at 8.8843% yield (By default, all the bond functions assume semi-annual coupons and semi-annually compounded yield):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.price</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+           <span class="dt">yield=</span><span class="fl">8.8843e-2</span>)</code></pre></div>
+<pre><code>## [1] 94.30449</code></pre>
+<p>Same bond with annual coupons and annually compounded yield (We use the <code>freq</code> argument to change the coupon frequency. By default, compounding frequency of the yield is assumed to be the same as the coupon frequency):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.price</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+           <span class="dt">yield=</span><span class="fl">8.8843e-2</span>, <span class="dt">freq=</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 94.33212</code></pre>
+<p>Same bond with annual coupon and semi-annually compounded yield (We set the <code>comp-freq</code> argument to use a compounding frequency different from the coupon frequency):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.price</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+           <span class="dt">yield=</span><span class="fl">8.8843e-2</span>, <span class="dt">freq=</span><span class="dv">1</span>, <span class="dt">comp.freq=</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 93.13936</code></pre>
+<p>Compute the yield given the price:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.yield</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+           <span class="dt">price=</span><span class="dv">95</span>) </code></pre></div>
+<pre><code>## [1] 0.08772266</code></pre>
+<p>Negative yields are handled properly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.yield</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2017-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">1e-2</span>,
+           <span class="dt">price=</span><span class="dv">120</span>) </code></pre></div>
+<pre><code>## [1] -0.0292794</code></pre>
+<p>Duration on 15 April 2012 of 8% bond maturing on 1 January 2022 at 8.8843% yield (semi-annual coupons and semi-annually compounded yield)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.duration</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+              <span class="dt">yield=</span><span class="fl">8.8843e-2</span>)</code></pre></div>
+<pre><code>## [1] 6.678709</code></pre>
+<p>Modified duration of same bond:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.duration</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">coupon=</span><span class="fl">8e-2</span>,
+              <span class="dt">yield=</span><span class="fl">8.8843e-2</span>, <span class="dt">modified=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 6.394649</code></pre>
+<p>Find prices of many bonds with one function call:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.prices</span>(<span class="dt">settle=</span><span class="st">&quot;2012-01-01&quot;</span>, <span class="dt">mature=</span><span class="kw">c</span>(<span class="st">&quot;2022-01-01&quot;</span>, <span class="st">&quot;2032-01-01&quot;</span>),
+            <span class="dt">coupon=</span><span class="kw">c</span>(<span class="fl">0.09</span>, <span class="fl">0.08</span>,<span class="fl">0.07</span>,<span class="fl">0.06</span>), <span class="dt">yield=</span><span class="fl">0.10</span>)</code></pre></div>
+<pre><code>## [1] 93.76889 82.84091 81.30668 65.68183</code></pre>
+<p>Find yields of many bonds with one function call</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.yields</span>(<span class="dt">settle=</span><span class="st">&quot;2012-01-01&quot;</span>, <span class="dt">mature=</span><span class="kw">c</span>(<span class="st">&quot;2022-01-01&quot;</span>, <span class="st">&quot;2032-01-01&quot;</span>),
+            <span class="dt">coupon=</span><span class="kw">c</span>(<span class="fl">0.09</span>, <span class="fl">0.08</span>,<span class="fl">0.07</span>,<span class="fl">0.06</span>),
+            <span class="dt">price=</span><span class="kw">c</span>(<span class="dv">94</span>, <span class="dv">83</span>, <span class="dv">81</span>, <span class="dv">65</span>))</code></pre></div>
+<pre><code>## [1] 0.09961333 0.09978548 0.10056530 0.10110332</code></pre>
+<p>Find durations of many bonds with one function call:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bond.durations</span>(<span class="dt">settle=</span><span class="st">&quot;2012-01-01&quot;</span>,
+               <span class="dt">mature=</span><span class="kw">c</span>(<span class="st">&quot;2022-01-01&quot;</span>, <span class="st">&quot;2032-01-01&quot;</span>),
+               <span class="dt">coupon=</span><span class="kw">c</span>(<span class="fl">0.09</span>, <span class="fl">0.08</span>,<span class="fl">0.07</span>,<span class="fl">0.06</span>),  <span class="dt">yield=</span><span class="fl">0.10</span>)</code></pre></div>
+<pre><code>## [1] 6.681623 9.385458 7.023446 9.959342</code></pre>
+<p>Find all the coupon dates of a bond:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coupons.dates</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>)</code></pre></div>
+<pre><code>##  [1] &quot;2012-07-01&quot; &quot;2013-01-01&quot; &quot;2013-07-01&quot; &quot;2014-01-01&quot; &quot;2014-07-01&quot;
+##  [6] &quot;2015-01-01&quot; &quot;2015-07-01&quot; &quot;2016-01-01&quot; &quot;2016-07-01&quot; &quot;2017-01-01&quot;
+## [11] &quot;2017-07-01&quot; &quot;2018-01-01&quot; &quot;2018-07-01&quot; &quot;2019-01-01&quot; &quot;2019-07-01&quot;
+## [16] &quot;2020-01-01&quot; &quot;2020-07-01&quot; &quot;2021-01-01&quot; &quot;2021-07-01&quot; &quot;2022-01-01&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coupons.dates</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-01-01&quot;</span>, <span class="dt">freq=</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>##  [1] &quot;2013-01-01&quot; &quot;2014-01-01&quot; &quot;2015-01-01&quot; &quot;2016-01-01&quot; &quot;2017-01-01&quot;
+##  [6] &quot;2018-01-01&quot; &quot;2019-01-01&quot; &quot;2020-01-01&quot; &quot;2021-01-01&quot; &quot;2022-01-01&quot;</code></pre>
+<p>Find a specific coupon date:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coupons.next</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-04-01&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2012-10-01&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coupons.prev</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2022-04-01&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;2012-04-01&quot;</code></pre>
+<p>Find the number of coupons:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coupons.n</span>(<span class="dt">settle=</span><span class="st">&quot;2012-04-15&quot;</span>, <span class="dt">mature=</span><span class="st">&quot;2017-07-01&quot;</span>)</code></pre></div>
+<pre><code>## [1] 11</code></pre>
+</div>
+<div id="generalized-black-scholes-formulas" class="section level1">
+<h1><a name="gbs"></a> (Generalized) Black Scholes Formulas</h1>
+<p>Find Black Scholes options values and Greeks when spot price and strike = 100, interest rate = 10%, volatility = 20%, maturity = 1 year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BS &lt;-<span class="st"> </span><span class="kw">GenBS</span>(<span class="dt">s=</span><span class="dv">100</span>, <span class="dt">X=</span><span class="dv">100</span>, <span class="dt">r=</span><span class="fl">0.1</span>, <span class="dt">Sigma=</span><span class="fl">20e-2</span>, <span class="dt">t=</span><span class="dv">1</span>, <span class="dt">div_yield=</span><span class="dv">0</span>)
+<span class="co"># we use unlist to print the result more compactly</span>
+<span class="kw">unlist</span>(BS)</code></pre></div>
+<pre><code>##             call              put Greeks.callDelta  Greeks.putDelta 
+##      13.26967658       3.75341839       0.72574688      -0.27425312 
+## Greeks.callTheta  Greeks.putTheta     Greeks.Gamma      Greeks.Vega 
+##      -9.26274719      -0.21437301       0.01666123      33.32246029 
+##   Greeks.callRho    Greeks.putRho         extra.d1         extra.d2 
+##      59.30501164     -31.17873016       0.60000000       0.40000000 
+##        extra.Nd1        extra.Nd2   extra.Nminusd1   extra.Nminusd2 
+##       0.72574688       0.65542174       0.27425312       0.34457826 
+##   extra.callProb    extra.putProb 
+##       0.65542174       0.34457826</code></pre>
+<p>Next we illustrate the generalized Black Scholes formulas where the asset pays a continuous dividend yield. This is useful for foreign currency options, options on futures and options on stock indices.</p>
+<p>Spot price =100, strike = 120, interest rate = 10%, volatility = 15%, maturity = 1 year, and dividend yield = 5.8%:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GBS &lt;-<span class="st"> </span><span class="kw">GenBS</span>(<span class="dt">s=</span><span class="dv">100</span>, <span class="dt">X=</span><span class="dv">120</span>, <span class="dt">r=</span><span class="fl">0.1</span>, <span class="dt">Sigma=</span><span class="fl">15e-2</span>, <span class="dt">t=</span><span class="dv">1</span>, <span class="dt">div_yield=</span><span class="fl">5.8e-2</span>)
+<span class="co"># we use unlist to print the result more compactly</span>
+<span class="kw">unlist</span>(GBS)</code></pre></div>
+<pre><code>##             call              put Greeks.callDelta  Greeks.putDelta 
+##       1.42577503      15.64127045       0.18378816      -0.75986179 
+## Greeks.callTheta  Greeks.putTheta     Greeks.Gamma      Greeks.Vega 
+##      -2.57918601       2.80569331       0.01733203      25.99804337 
+##   Greeks.callRho    Greeks.putRho         extra.d1         extra.d2 
+##      16.95304065     -91.62744951      -0.86047705      -1.01047705 
+##        extra.Nd1        extra.Nd2   extra.Nminusd1   extra.Nminusd2 
+##       0.19476307       0.15613340       0.80523693       0.84386660 
+##   extra.callProb    extra.putProb 
+##       0.15613340       0.84386660</code></pre>
+<p>Find implied volatility when call price is 7.97 ,spot price and strike = 100, interest rate zero, and maturity is 1 year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GenBSImplied</span>(<span class="dt">s=</span><span class="dv">100</span>, <span class="dt">X=</span><span class="dv">100</span>, <span class="dt">r=</span><span class="dv">0</span>, <span class="dt">price=</span><span class="fl">7.97</span>, <span class="dt">t=</span><span class="dv">1</span>, <span class="dt">div_yield=</span><span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 0.2001117</code></pre>
+<p>Same as above but strike = 90. Since the option price is less than intrinsic value, the implied volatility is undefined:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GenBSImplied</span>(<span class="dt">s=</span><span class="dv">100</span>, <span class="dt">X=</span><span class="dv">90</span>, <span class="dt">r=</span><span class="dv">0</span>, <span class="dt">price=</span><span class="fl">7.97</span>, <span class="dt">t=</span><span class="dv">1</span>, <span class="dt">div_yield=</span><span class="dv">0</span>)</code></pre></div>
+<pre><code>## Warning in GenBSImplied(s = 100, X = 90, r = 0, price = 7.97, t = 1,
+## div_yield = 0): Implied volatility is undefined because price is outside
+## theoretical bounds</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Same as above but strike = 900. Since the strike is so far out of the money, a rather high implied volatility is needed for the option to be valuable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GenBSImplied</span>(<span class="dt">s=</span><span class="dv">100</span>, <span class="dt">X=</span><span class="dv">900</span>, <span class="dt">r=</span><span class="dv">0</span>, <span class="dt">price=</span><span class="fl">7.97</span>, <span class="dt">t=</span><span class="dv">1</span>, <span class="dt">div_yield=</span><span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 1.370036</code></pre>
+</div>
+<div id="utility-functions" class="section level1">
+<h1><a name="util"></a>Utility functions</h1>
+<div id="equivalent-rate-with-different-compounding-frequency" class="section level2">
+<h2>Equivalent rate with different compounding frequency</h2>
+<p>Convert 10% monthly compounded rate to equivalent semi-annually compounded rate</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">equiv.rate</span>(<span class="fl">10e-2</span>, <span class="dt">from.freq =</span> <span class="dv">12</span>, <span class="dt">to.freq =</span> <span class="dv">2</span>) </code></pre></div>
+<pre><code>## [1] 0.1021066</code></pre>
+<p>Convert 15% annually compounded rate to equivalent continuously compounded rate</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">equiv.rate</span>(<span class="fl">15e-2</span>, <span class="dt">from.freq =</span> <span class="dv">1</span>, <span class="dt">to.freq =</span> <span class="ot">Inf</span>)</code></pre></div>
+<pre><code>## [1] 0.1397619</code></pre>
+</div>
+<div id="edate" class="section level2">
+<h2>edate</h2>
+<p><code>edate</code> is a common spreadsheet function which is used in this package for finding coupon dates. It is made available for general use.</p>
+<p>Find date eight months prior to 17 May 2005:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">edate</span>(<span class="st">&quot;2005-05-17&quot;</span>, -<span class="dv">8</span>) </code></pre></div>
+<pre><code>## [1] &quot;2004-09-17&quot;</code></pre>
+<p>Find date four months after 28 February 2007. Note that the output is the last day of June and not the 28th June</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">edate</span>(<span class="st">&quot;2007-02-28&quot;</span>, <span class="dv">4</span>) </code></pre></div>
+<pre><code>## [1] &quot;2007-06-30&quot;</code></pre>
+<p>But things change in a leap year</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">edate</span>(<span class="st">&quot;2008-02-28&quot;</span>, <span class="dv">4</span>) </code></pre></div>
+<pre><code>## [1] &quot;2008-06-28&quot;</code></pre>
+</div>
+<div id="newton-raphson-root-solver" class="section level2">
+<h2>Newton Raphson root solver</h2>
+<p>The package implements a Newton Raphson root solver that is used internally to calculate IRR and YTM. It is available for general use.</p>
+<p>Find root of the equation <em>sin(x) = cos(x)</em>. (Analytically, the root is known to be π/4)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fn1 &lt;-function(x){<span class="kw">list</span>(<span class="dt">value=</span><span class="kw">sin</span>(x)-<span class="kw">cos</span>(x), <span class="dt">gradient=</span><span class="kw">cos</span>(x)+<span class="kw">sin</span>(x))} 
+<span class="kw">newton.raphson.root</span>(fn1) </code></pre></div>
+<pre><code>## [1] 0.7853982</code></pre>
+<p>Try to find root of equation which has no real root: <em>sin(x) = -2</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fn2 &lt;-function(x){<span class="kw">list</span>(<span class="dt">value=</span><span class="dv">2</span> +<span class="st"> </span><span class="kw">sin</span>(x), <span class="dt">gradient=</span><span class="kw">cos</span>(x))}
+<span class="kw">newton.raphson.root</span>(fn2) </code></pre></div>
+<pre><code>## Warning: newton.raphson.root failed: Converged to a non zero local minimum</code></pre>
+<pre><code>## [1] NA</code></pre>
+</div>
+<div id="bisection-root-solver" class="section level2">
+<h2>Bisection root solver</h2>
+<p>The package implements a bisection root solver that does a geometric grid search to bracket the root and then calls <code>uniroot</code> to find the root within this interval. The package uses the function internally to calculate IRR and YTM, but <code>bisection.root</code> is available for general use.</p>
+<p>For example, the values of 1, 7, 12 and 13 do not bracket the root of sin(x) since the function is positive at all these values, but <code>bisection.root</code> finds the root given these numbers as the interval and the guess value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bisection.root</span>(sin, <span class="dt">guess =</span> <span class="dv">7</span>, <span class="dt">lower=</span><span class="dv">1</span>, <span class="dt">upper=</span><span class="dv">13</span>)</code></pre></div>
+<pre><code>## [1] 6.283185</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bisection.root</span>(sin, <span class="dt">guess =</span> <span class="dv">12</span>, <span class="dt">lower=</span><span class="dv">1</span>, <span class="dt">upper=</span><span class="dv">13</span>) </code></pre></div>
+<pre><code>## [1] 9.424778</code></pre>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

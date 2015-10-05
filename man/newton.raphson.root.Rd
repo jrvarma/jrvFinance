@@ -59,6 +59,6 @@ well - see the examples below.
 }
 \references{
 The Newton Raphson solver was converted from C++ code
-    in the Boost library
+    in the \href{http://www.boost.org/}{Boost library}
 }
 
