@@ -1,9 +1,9 @@
 Package: jrvFinance
-Title: Basic Finance; NPV/IRR/annuities/bond-pricing; Black Scholes
+Title: Basic Finance; NPV/IRR/Annuities/Bond-Pricing; Black Scholes
 Version: 1.03
-Authors@R: as.person("Jayanth Varma <jrvarma@iimahd.ernet.in>
-    [aut, cre]")
-Description: This implements the basic financial analysis
+Authors@R: person(given="Jayanth", family="Varma",
+  email="jrvarma@iimahd.ernet.in", role=c("aut","cre"))
+Description: Implements the basic financial analysis
     functions similar to (but not identical to) what
     is available in most spreadsheet software. This
     includes finding the IRR and NPV of regularly
