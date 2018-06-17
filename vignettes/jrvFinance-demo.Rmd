@@ -203,6 +203,13 @@ bond.price(settle="2012-04-15", mature="2022-01-01", coupon=8e-2,
            yield=8.8843e-2, freq=1, comp.freq=2)
 ```
 
+A bond with 5% coupon is callable at 102 on 1-Jan-2023 and is trading at an yield to call of 6% on 1-Jan-2018. The price is:
+
+```{r}
+bond.yield(settle='2018-01-01', mature='2023-01-01', coupon=5e-2, price=101,
+           redemption_value = 102)
+```
+
 Compute the yield given the price:
 
 
@@ -218,6 +225,12 @@ bond.yield(settle="2012-04-15", mature="2017-01-01", coupon=1e-2,
            price=120) 
 ```
 
+Yield to call:
+
+```{r}
+bond.yield(settle='2018-01-01', mature='2023-01-01', coupon=5e-2, price=101,
+           redemption_value = 102)
+```
 Duration on 15 April 2012 of 8% bond maturing on 1 January 2022 at
 8.8843% yield  (semi-annual coupons and semi-annually compounded
 yield)

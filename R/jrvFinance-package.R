@@ -21,7 +21,7 @@
 ##' @aliases jrvFinance-package jrvFinance
 ##' @docType package
 ##' 
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 ##' @references
 ##' The 30/360 day count was converted from C++ code in the QuantLib library.
 ##' The Newton Raphson solver was converted from C++ code in the Boost library

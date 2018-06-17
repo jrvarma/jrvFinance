@@ -40,7 +40,7 @@ npv <- function(cf, rate, cf.freq=1, comp.freq=1,
 ##'     starts searching for the IRR
 ##' @param toler the argument \code{toler} for
 ##'     \code{\link{irr.solve}}.  The IRR is regarded as correct if
-##'     abs(NPV) is less than toler.  Otherwise the \code{irr}
+##'     abs(NPV) is less than \code{toler}.  Otherwise the \code{irr}
 ##'     function returns \code{NA}
 ##' @param convergence the argument \code{convergence} for
 ##'     \code{\link{irr.solve}}

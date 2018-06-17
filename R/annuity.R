@@ -18,8 +18,8 @@
 ##' LHS of the present value relationship under the assumption that only of the
 ##' two is non zero. 
 ##' 
-##' The function annuity.instalment.breakup regards the annuity as a repayment
-##' of a loan equal to pv plus the present value of terminal.payment. The
+##' The function \code{annuity.instalment.breakup} regards the annuity as a repayment
+##' of a loan equal to \code{pv} plus the present value of terminal.payment. The
 ##' instalment paid in period period.no is broken up into the principal
 ##' repayment (amortization) and interest components.
 ##'
@@ -63,7 +63,7 @@
 ##' represents interest}
 ##' \item{principal.part}{The portion of the instalment
 ##' which represents principal repayment}
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 NULL
 
 ##' @rdname annuity

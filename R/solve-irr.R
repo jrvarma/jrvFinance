@@ -3,18 +3,18 @@
 ##' This function computes the internal rate of return at which the
 ##' net present value equals zero. It requires as input a function
 ##' that computes the net present value of a series of cash flows for
-##' a given interest rate as well as the derivative of the npv with
+##' a given interest rate as well as the derivative of the NPV with
 ##' respect to the interest rate (10,000 times this derivative is the
 ##' PVBP or DV01).  In this package, \code{irr.solve} is primarily
 ##' intended to be called by the \code{\link{irr}} and
 ##' \code{\link{bond.yield}} functions. It is made available for those
-##' who want to find irr of more complex instruments.
+##' who want to find IRR of more complex instruments.
 ##' 
 ##' The function \code{irr.solve} is basically an interface to the
 ##' general root finder \code{\link{newton.raphson.root}}. However, if
 ##' \code{\link{newton.raphson.root}} fails, \code{irr.solve} makes an
 ##' attempt to find the root using \code{\link{uniroot}} from the R
-##' stats package. Uniroot uses bisection and it requires the root to
+##' stats package. \code{Uniroot} uses bisection and it requires the root to
 ##' be bracketed (the function must be of opposite sign at the two end
 ##' points - lower and upper).
 ##' 
@@ -41,11 +41,11 @@
 ##'     bisection (\code{\link{bisection.root}}). The other two
 ##'     choices (\code{newton} and \code{bisection} force only one of
 ##'     the methods to be tried.
-##' @return The function irr.solve returns \code{NA} if the irr/ytm
-##'     could not be found. Otherwise it returns the irr/ytm. When
+##' @return The function \code{irr.solve} returns \code{NA} if the IRR/YTM
+##'     could not be found. Otherwise it returns the IRR/YTM. When
 ##'     \code{NA} is returned, a warning message is printed
 ##' 
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 ##' @export
 irr.solve <- function(f, interval = NULL, r.guess = NULL, toler = 1e-6,
                       convergence = 1e-8, max.iter = 100,
@@ -142,7 +142,7 @@ irr.solve <- function(f, interval = NULL, r.guess = NULL, toler = 1e-6,
 ##'     for the root. Must be positive.
 ##' @param upper The upper end of the interval within which to search
 ##'     for the root. Must be positive.
-##' @param nstep THe number of steps in the grid search to bracket the
+##' @param nstep The number of steps in the grid search to bracket the
 ##'     zero. See details.
 ##' @param toler The criterion to determine whether a zero has been
 ##'     found. This is passed on to \code{\link[stats]{uniroot}}
@@ -206,7 +206,7 @@ bisection.root <- function(f, guess, lower, upper, nstep = 100,
 
 ##' A Newton Raphson root finder: finds x such that f(x) = 0 
 ##' 
-##' The function newton.raphson.root is a general root finder which
+##' The function \code{newton.raphson.root} is a general root finder which
 ##' can find the zero of any function whose derivative is available.
 ##' In this package, it is called by \code{\link{irr.solve}} and by
 ##' \code{\link{GenBSImplied}}. It can be used in other situations as

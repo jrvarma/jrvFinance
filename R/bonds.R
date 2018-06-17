@@ -4,7 +4,7 @@
 ##' bond.duration computes the duration given the yield to maturity
 ##' bond.yield computes the yield to maturity given the price
 ##' bond.prices, bond.durations and bond.yields are wrapper functions
-##' that use mapply to vectorize bond.price, bond.duration and bond.yield
+##' that use \code{mapply} to vectorize bond.price, bond.duration and bond.yield
 ##' All arguments to bond.prices, bond.durations and bond.yields
 ##' can be vectors.
 ##' On the other hand, bond.price, bond.duration and bond.yield do not allow vectors 
@@ -27,6 +27,8 @@
 ##' @param comp.freq The frequency of compounding of the bond yield: 1 for
 ##' annual, 2 for semi-annual, 12 for monthly. Usually same as freq.
 ##' @param price The clean price of the bond.
+##' @param redemption_value The principal amount that the bond will pay on maturity or call.
+##' Typically necessary when the bond is expected to be called at premium to par.
 ##' @param yield The yield to maturity of the bond
 ##' @param convention The daycount convention
 ##' @param modified A logical value used in duration. \code{TRUE} to return Modified
@@ -35,7 +37,7 @@
 ##' \item{t}{A vector of cash flow dates in number of years}
 ##' \item{cf}{A vector of cash flows}
 ##' \item{accrued}{The accrued interest}
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 
 NULL
 
@@ -44,10 +46,10 @@ NULL
 ##' @export
 bond.price <- function(settle, mature, coupon, freq=2, yield, 
                   convention=c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-                  comp.freq=freq){
+                  comp.freq=freq, redemption_value=100){
   settle <- as.Date(settle)
   mature <- as.Date(mature)  
-  TCF <- bond.TCF(settle, mature, coupon, freq, convention)
+  TCF <- bond.TCF(settle, mature, coupon, freq, convention, redemption_value)
   if (length(TCF$t) == 1){
       ## short government bond convention = simple interest
     return (TCF$cf[1] / (1 + yield * TCF$t[1]) - TCF$accrued)
@@ -64,10 +66,10 @@ bond.price <- function(settle, mature, coupon, freq=2, yield,
 bond.yield <- function(settle, mature, coupon, freq=2, price,
                   convention=c("30/360", "ACT/ACT", "ACT/360",
                                "30/360E"),
-                  comp.freq=freq){
+                  comp.freq=freq, redemption_value=100){
   settle <- as.Date(settle)
   mature <- as.Date(mature)
-  TCF <- bond.TCF(settle, mature, coupon, freq, convention)
+  TCF <- bond.TCF(settle, mature, coupon, freq, convention, redemption_value)
   if (length(TCF$t) == 1){
       ## short government bond convention = simple interest
       return ( (TCF$cf[1] / (price + TCF$accrued) - 1) / TCF$t[1] )
@@ -87,10 +89,10 @@ bond.yield <- function(settle, mature, coupon, freq=2, price,
 bond.duration <- function(settle, mature, coupon, freq=2, yield,
                      convention=c("30/360", "ACT/ACT", "ACT/360",
                                   "30/360E"),
-                     modified=FALSE, comp.freq=freq){
+                     modified=FALSE, comp.freq=freq, redemption_value=100){
   settle <- as.Date(settle)
   mature <- as.Date(mature)
-  TCF <- bond.TCF(settle, mature, coupon, freq, convention)
+  TCF <- bond.TCF(settle, mature, coupon, freq, convention, redemption_value)
   if (length(TCF$t) == 1){
       ## short government bond convention = simple interest
       return(yearFraction(settle, mature))
@@ -103,7 +105,8 @@ bond.duration <- function(settle, mature, coupon, freq=2, yield,
 ##' @rdname bonds
 ##' @export
 bond.TCF <- function(settle, mature, coupon, freq=2,
-                 convention=c("30/360", "ACT/ACT", "ACT/360", "30/360E")){
+                     convention=c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
+                     redemption_value=100){
   settle <- as.Date(settle)
   mature <- as.Date(mature)
   nextC <- coupons.next(settle, mature, freq)
@@ -114,7 +117,7 @@ bond.TCF <- function(settle, mature, coupon, freq=2,
   t <- seq(from=start, by=1/freq, length.out=coupons.n(settle, mature,
                                                        freq))
   cf <- rep(coupon*100/freq, length(t))
-  cf[length(cf)] <- 100 + coupon*100/freq
+  cf[length(cf)] <- redemption_value + coupon*100/freq
   list(t=t,cf=cf, accrued=accrued)
 }
 
@@ -126,7 +129,7 @@ bond.TCF <- function(settle, mature, coupon, freq=2,
 ##'
 ##' @name coupons
 ##' @aliases coupons.n coupons.dates coupons.next coupons.prev coupons
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 NULL
 
 
@@ -180,10 +183,10 @@ coupons.prev <- function(settle, mature, freq=2){
 ##' @export
 bond.prices <- function(settle, mature, coupon, freq=2, yield, 
                   convention=c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-                  comp.freq=freq){
+                  comp.freq=freq, redemption_value=100){
   convention <- match.arg(convention)
   mapply(bond.price, settle, mature, coupon, freq, yield, convention,
-         comp.freq, USE.NAMES=FALSE)
+         comp.freq, redemption_value, USE.NAMES=FALSE)
 }
 
 ##' @rdname bonds
@@ -191,10 +194,10 @@ bond.prices <- function(settle, mature, coupon, freq=2, yield,
 bond.yields <- function(settle, mature, coupon, freq=2, price,
                   convention=c("30/360", "ACT/ACT", "ACT/360",
                                "30/360E"),
-                  comp.freq=freq){
+                  comp.freq=freq, redemption_value=100){
   convention <- match.arg(convention)
   mapply(bond.yield, settle, mature, coupon, freq, price, convention,
-         comp.freq, USE.NAMES=FALSE)
+         comp.freq, redemption_value, USE.NAMES=FALSE)
 }
 
 ##' @rdname bonds
@@ -202,8 +205,8 @@ bond.yields <- function(settle, mature, coupon, freq=2, price,
 bond.durations <- function(settle, mature, coupon, freq=2, yield,
                            convention=c("30/360", "ACT/ACT",
                                         "ACT/360", "30/360E"),
-                     modified=FALSE, comp.freq=freq){
+                     modified=FALSE, comp.freq=freq, redemption_value=100){
   convention <- match.arg(convention)
   mapply(bond.duration, settle, mature, coupon, freq, yield, convention,
-         modified, comp.freq, USE.NAMES=FALSE)
+         modified, comp.freq, redemption_value, USE.NAMES=FALSE)
 }

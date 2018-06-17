@@ -16,7 +16,7 @@
 ##' @param convention The daycount convention
 ##' @param variant Three variants of the 30/360 convention are implemented, but
 ##' only one variant of ACT/ACT is currently implemented
-##' @author Prof. Jayanth R. Varma \email{jrvarma@@iimahd.ernet.in}
+##' @author Prof. Jayanth R. Varma \email{jrvarma@@iima.ac.in}
 ##' @references The 30/360 day count was converted from C++ code in the
 ##' QuantLib library
 NULL
