@@ -4,8 +4,8 @@
 \alias{GenBSImplied}
 \title{Generalized Black Scholes model implied volatility}
 \usage{
-GenBSImplied(s, X, r, price, t, div_yield, PutOpt = FALSE, toler = 1e-06,
-  max.iter = 100, convergence = 1e-08)
+GenBSImplied(s, X, r, price, t, div_yield, PutOpt = FALSE,
+  toler = 1e-06, max.iter = 100, convergence = 1e-08)
 }
 \arguments{
 \item{s}{the spot price of the asset (the stock price for options on stocks)}

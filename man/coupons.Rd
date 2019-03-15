@@ -6,10 +6,6 @@
 \alias{coupons.dates}
 \alias{coupons.next}
 \alias{coupons.prev}
-\alias{coupons.dates}
-\alias{coupons.n}
-\alias{coupons.next}
-\alias{coupons.prev}
 \title{Bond pricing using yield to maturity.}
 \usage{
 coupons.dates(settle, mature, freq = 2)

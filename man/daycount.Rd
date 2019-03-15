@@ -5,13 +5,10 @@
 \alias{daycount.30.360}
 \alias{daycount.actual}
 \alias{yearFraction}
-\alias{yearFraction}
-\alias{daycount.actual}
-\alias{daycount.30.360}
 \title{Day count and year fraction for bond pricing}
 \usage{
-yearFraction(d1, d2, r1, r2, freq = 2, convention = c("30/360", "ACT/ACT",
-  "ACT/360", "30/360E"))
+yearFraction(d1, d2, r1, r2, freq = 2, convention = c("30/360",
+  "ACT/ACT", "ACT/360", "30/360E"))
 
 daycount.actual(d1, d2, variant = c("bond"))
 

@@ -9,22 +9,15 @@
 \alias{bond.prices}
 \alias{bond.durations}
 \alias{bond.yields}
-\alias{bond.price}
-\alias{bond.yield}
-\alias{bond.duration}
-\alias{bond.TCF}
-\alias{bond.prices}
-\alias{bond.yields}
-\alias{bond.durations}
 \title{Bond pricing using yield to maturity.}
 \usage{
-bond.price(settle, mature, coupon, freq = 2, yield, convention = c("30/360",
-  "ACT/ACT", "ACT/360", "30/360E"), comp.freq = freq,
-  redemption_value = 100)
+bond.price(settle, mature, coupon, freq = 2, yield,
+  convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
+  comp.freq = freq, redemption_value = 100)
 
-bond.yield(settle, mature, coupon, freq = 2, price, convention = c("30/360",
-  "ACT/ACT", "ACT/360", "30/360E"), comp.freq = freq,
-  redemption_value = 100)
+bond.yield(settle, mature, coupon, freq = 2, price,
+  convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
+  comp.freq = freq, redemption_value = 100)
 
 bond.duration(settle, mature, coupon, freq = 2, yield,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),

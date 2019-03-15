@@ -81,18 +81,18 @@ edate <- function(from, months=1){
   Y <- y + (m + months - M) %/% 12
   ld <- last.day.of.month(m+1, y)
   LD <- last.day.of.month(M+1, Y)
-  D <- if (d == ld || d > LD) LD else d
+  D <- ifelse (d == ld | d > LD, LD, d)
   as.Date(ISOdate(Y, M+1, D))
 }
 
 ## Used internally not exported
 last.day.of.month <- function(m, y){
   c(31,28,31, 30,31,30, 31,31,30, 31,30,31)[m] +
-      if (is.leap.year(y) && m == 2) 1 else 0
+      ifelse(is.leap.year(y) & m == 2, 1, 0)
 }
 
 ## Used internally not exported
 is.leap.year <- function(y){
-  y %% 4 == 0 && (y %% 100 !=0 || y %% 400 == 0)
+  y %% 4 == 0 & (y %% 100 !=0 | y %% 400 == 0)
 }
 

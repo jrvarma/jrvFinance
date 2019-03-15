@@ -8,34 +8,31 @@
 \alias{annuity.periods}
 \alias{annuity.rate}
 \alias{annuity.instalment.breakup}
-\alias{annuity.pv}
-\alias{annuity.fv}
-\alias{annuity.instalment}
-\alias{annuity.periods}
-\alias{annuity.rate}
-\alias{annuity.instalment.breakup}
 \title{Present Value of Annuity and Related Functions}
 \usage{
-annuity.pv(rate, n.periods = Inf, instalment = 1, terminal.payment = 0,
-  immediate.start = FALSE, cf.freq = 1, comp.freq = 1)
-
-annuity.fv(rate, n.periods = Inf, instalment = 1, terminal.payment = 0,
-  immediate.start = FALSE, cf.freq = 1, comp.freq = 1)
-
-annuity.instalment(rate, n.periods = Inf, pv = if (missing(fv)) 1 else 0,
-  fv = 0, terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
+annuity.pv(rate, n.periods = Inf, instalment = 1,
+  terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
   comp.freq = 1)
+
+annuity.fv(rate, n.periods = Inf, instalment = 1,
+  terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
+  comp.freq = 1)
+
+annuity.instalment(rate, n.periods = Inf, pv = if (missing(fv)) 1 else
+  0, fv = 0, terminal.payment = 0, immediate.start = FALSE,
+  cf.freq = 1, comp.freq = 1)
 
 annuity.periods(rate, instalment = 1, pv = if (missing(fv)) 1 else 0,
-  fv = 0, terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
-  comp.freq = 1, round2int.digits = 3)
+  fv = 0, terminal.payment = 0, immediate.start = FALSE,
+  cf.freq = 1, comp.freq = 1, round2int.digits = 3)
 
-annuity.rate(n.periods = Inf, instalment = 1, pv = if (missing(fv)) 1 else
-  0, fv = 0, terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
-  comp.freq = 1)
+annuity.rate(n.periods = Inf, instalment = 1, pv = if (missing(fv)) 1
+  else 0, fv = 0, terminal.payment = 0, immediate.start = FALSE,
+  cf.freq = 1, comp.freq = 1)
 
 annuity.instalment.breakup(rate, n.periods = Inf, pv = 1,
-  immediate.start = FALSE, cf.freq = 1, comp.freq = 1, period.no = 1)
+  immediate.start = FALSE, cf.freq = 1, comp.freq = 1,
+  period.no = 1)
 }
 \arguments{
 \item{rate}{The interest rate in decimal (0.10 or 10e-2 for 10\%)}
