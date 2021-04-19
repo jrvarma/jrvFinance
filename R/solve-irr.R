@@ -249,7 +249,7 @@ bisection.root <- function(f, guess, lower, upper, nstep = 100,
 ##' \code{toler}), then it returns the root that was found.
 ##'
 ##' @references The Newton Raphson solver was converted from C++ code
-##'     in the \href{http://www.boost.org/}{Boost library}
+##'     in the \href{https://www.boost.org/}{Boost library}
 ##' @export
 newton.raphson.root <- function(f, guess=0, lower=-Inf, upper=Inf,
                                 max.iter=100, toler=1e-6,
