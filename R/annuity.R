@@ -94,7 +94,7 @@ annuity.instalment <- function(rate, n.periods=Inf, pv=if(missing(fv)) 1 else 0,
                                terminal.payment=0, immediate.start=FALSE, cf.freq=1, comp.freq=1){
   r = equiv.rate(rate, comp.freq, cf.freq)/cf.freq
   df <- (1 + r)^-n.periods
-  annuity.pv = pv + (fv - terminal.payment) * df * if (immediate.start) 1 + r else 1
+  annuity.pv = pv + (fv - terminal.payment) * df
   if (rate == 0) return(annuity.pv /n.periods)
   adjust <- if (immediate.start) 1 + r else 1
   r * annuity.pv / (adjust * (1 - df))
