@@ -11,32 +11,82 @@
 \alias{bond.yields}
 \title{Bond pricing using yield to maturity.}
 \usage{
-bond.price(settle, mature, coupon, freq = 2, yield,
+bond.price(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  yield,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  comp.freq = freq, redemption_value = 100)
+  comp.freq = freq,
+  redemption_value = 100
+)
 
-bond.yield(settle, mature, coupon, freq = 2, price,
+bond.yield(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  price,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  comp.freq = freq, redemption_value = 100)
+  comp.freq = freq,
+  redemption_value = 100
+)
 
-bond.duration(settle, mature, coupon, freq = 2, yield,
+bond.duration(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  yield,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  modified = FALSE, comp.freq = freq, redemption_value = 100)
+  modified = FALSE,
+  comp.freq = freq,
+  redemption_value = 100
+)
 
-bond.TCF(settle, mature, coupon, freq = 2, convention = c("30/360",
-  "ACT/ACT", "ACT/360", "30/360E"), redemption_value = 100)
-
-bond.prices(settle, mature, coupon, freq = 2, yield,
+bond.TCF(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  comp.freq = freq, redemption_value = 100)
+  redemption_value = 100
+)
 
-bond.yields(settle, mature, coupon, freq = 2, price,
+bond.prices(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  yield,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  comp.freq = freq, redemption_value = 100)
+  comp.freq = freq,
+  redemption_value = 100
+)
 
-bond.durations(settle, mature, coupon, freq = 2, yield,
+bond.yields(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  price,
   convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
-  modified = FALSE, comp.freq = freq, redemption_value = 100)
+  comp.freq = freq,
+  redemption_value = 100
+)
+
+bond.durations(
+  settle,
+  mature,
+  coupon,
+  freq = 2,
+  yield,
+  convention = c("30/360", "ACT/ACT", "ACT/360", "30/360E"),
+  modified = FALSE,
+  comp.freq = freq,
+  redemption_value = 100
+)
 }
 \arguments{
 \item{settle}{The settlement date for which the bond is traded. Can be a

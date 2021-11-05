@@ -4,9 +4,15 @@
 \alias{npv}
 \title{Net Present Value}
 \usage{
-npv(cf, rate, cf.freq = 1, comp.freq = 1, cf.t = seq(from = if
-  (immediate.start) 0 else 1/cf.freq, by = 1/cf.freq, along.with = cf),
-  immediate.start = FALSE)
+npv(
+  cf,
+  rate,
+  cf.freq = 1,
+  comp.freq = 1,
+  cf.t = seq(from = if (immediate.start) 0 else 1/cf.freq, by = 1/cf.freq, along.with =
+    cf),
+  immediate.start = FALSE
+)
 }
 \arguments{
 \item{cf}{Vector of cash flows}

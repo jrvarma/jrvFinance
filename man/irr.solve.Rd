@@ -4,9 +4,15 @@
 \alias{irr.solve}
 \title{Solve for IRR (internal rate of return) or YTM (yield to maturity)}
 \usage{
-irr.solve(f, interval = NULL, r.guess = NULL, toler = 1e-06,
-  convergence = 1e-08, max.iter = 100, method = c("default",
-  "newton", "bisection"))
+irr.solve(
+  f,
+  interval = NULL,
+  r.guess = NULL,
+  toler = 1e-06,
+  convergence = 1e-08,
+  max.iter = 100,
+  method = c("default", "newton", "bisection")
+)
 }
 \arguments{
 \item{f}{The function whose zero is to be found. An R function

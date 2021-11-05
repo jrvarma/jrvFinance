@@ -1,3 +1,7 @@
+# jrvFinance 1.4.3
+
+Fixed bug: [immediate.start=TRUE has no effect on annuity.installment when given fv](https://github.com/jrvarma/jrvFinance/issues/2)
+
 # jrvFinance 1.4.2
 
 Dependency fixed. Suggests `markdown` and `rmarkdown` as required by <https://github.com/yihui/knitr/issues/1864>

@@ -4,8 +4,15 @@
 \alias{newton.raphson.root}
 \title{A Newton Raphson root finder: finds x such that f(x) = 0}
 \usage{
-newton.raphson.root(f, guess = 0, lower = -Inf, upper = Inf,
-  max.iter = 100, toler = 1e-06, convergence = 1e-08)
+newton.raphson.root(
+  f,
+  guess = 0,
+  lower = -Inf,
+  upper = Inf,
+  max.iter = 100,
+  toler = 1e-06,
+  convergence = 1e-08
+)
 }
 \arguments{
 \item{f}{The function whose zero is to be found. An R function
@@ -59,5 +66,5 @@ well - see the examples below.
 }
 \references{
 The Newton Raphson solver was converted from C++ code
-    in the \href{http://www.boost.org/}{Boost library}
+    in the \href{https://www.boost.org/}{Boost library}
 }

@@ -10,29 +10,69 @@
 \alias{annuity.instalment.breakup}
 \title{Present Value of Annuity and Related Functions}
 \usage{
-annuity.pv(rate, n.periods = Inf, instalment = 1,
-  terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
-  comp.freq = 1)
+annuity.pv(
+  rate,
+  n.periods = Inf,
+  instalment = 1,
+  terminal.payment = 0,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1
+)
 
-annuity.fv(rate, n.periods = Inf, instalment = 1,
-  terminal.payment = 0, immediate.start = FALSE, cf.freq = 1,
-  comp.freq = 1)
+annuity.fv(
+  rate,
+  n.periods = Inf,
+  instalment = 1,
+  terminal.payment = 0,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1
+)
 
-annuity.instalment(rate, n.periods = Inf, pv = if (missing(fv)) 1 else
-  0, fv = 0, terminal.payment = 0, immediate.start = FALSE,
-  cf.freq = 1, comp.freq = 1)
+annuity.instalment(
+  rate,
+  n.periods = Inf,
+  pv = if (missing(fv)) 1 else 0,
+  fv = 0,
+  terminal.payment = 0,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1
+)
 
-annuity.periods(rate, instalment = 1, pv = if (missing(fv)) 1 else 0,
-  fv = 0, terminal.payment = 0, immediate.start = FALSE,
-  cf.freq = 1, comp.freq = 1, round2int.digits = 3)
+annuity.periods(
+  rate,
+  instalment = 1,
+  pv = if (missing(fv)) 1 else 0,
+  fv = 0,
+  terminal.payment = 0,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1,
+  round2int.digits = 3
+)
 
-annuity.rate(n.periods = Inf, instalment = 1, pv = if (missing(fv)) 1
-  else 0, fv = 0, terminal.payment = 0, immediate.start = FALSE,
-  cf.freq = 1, comp.freq = 1)
+annuity.rate(
+  n.periods = Inf,
+  instalment = 1,
+  pv = if (missing(fv)) 1 else 0,
+  fv = 0,
+  terminal.payment = 0,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1
+)
 
-annuity.instalment.breakup(rate, n.periods = Inf, pv = 1,
-  immediate.start = FALSE, cf.freq = 1, comp.freq = 1,
-  period.no = 1)
+annuity.instalment.breakup(
+  rate,
+  n.periods = Inf,
+  pv = 1,
+  immediate.start = FALSE,
+  cf.freq = 1,
+  comp.freq = 1,
+  period.no = 1
+)
 }
 \arguments{
 \item{rate}{The interest rate in decimal (0.10 or 10e-2 for 10\%)}
@@ -102,7 +142,7 @@ rate, cf.freq and comp.freq.
 It is intended that only one of \eqn{pv} or \eqn{fv} is used in any function call, but
 internally the functions use \eqn{pv + fv \cdot df}{pv + fv * df} as the
 LHS of the present value relationship under the assumption that only of the
-two is non zero.
+two is non zero. 
 
 The function \code{annuity.instalment.breakup} regards the annuity as a repayment
 of a loan equal to \code{pv} plus the present value of terminal.payment. The

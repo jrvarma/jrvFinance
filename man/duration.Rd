@@ -4,9 +4,16 @@
 \alias{duration}
 \title{Duration and Modified Duration}
 \usage{
-duration(cf, rate, cf.freq = 1, comp.freq = 1, cf.t = seq(from =
-  ifelse(immediate.start, 0, 1/cf.freq), by = 1/cf.freq, along.with = cf),
-  immediate.start = FALSE, modified = FALSE)
+duration(
+  cf,
+  rate,
+  cf.freq = 1,
+  comp.freq = 1,
+  cf.t = seq(from = ifelse(immediate.start, 0, 1/cf.freq), by = 1/cf.freq, along.with =
+    cf),
+  immediate.start = FALSE,
+  modified = FALSE
+)
 }
 \arguments{
 \item{cf}{Vector of cash flows}

@@ -4,10 +4,18 @@
 \alias{irr}
 \title{Internal Rate of Return}
 \usage{
-irr(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
+irr(
+  cf,
+  interval = NULL,
+  cf.freq = 1,
+  comp.freq = 1,
   cf.t = seq(from = 0, by = 1/cf.freq, along.with = cf),
-  r.guess = NULL, toler = 1e-06, convergence = 1e-08,
-  max.iter = 100, method = c("default", "newton", "bisection"))
+  r.guess = NULL,
+  toler = 1e-06,
+  convergence = 1e-08,
+  max.iter = 100,
+  method = c("default", "newton", "bisection")
+)
 }
 \arguments{
 \item{cf}{Vector of cash flows}
