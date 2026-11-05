@@ -50,6 +50,7 @@ annuity.periods(
   immediate.start = FALSE,
   cf.freq = 1,
   comp.freq = 1,
+  round2int = TRUE,
   round2int.digits = 3
 )
 
@@ -100,7 +101,8 @@ payment.}
 \item{fv}{The future value (at the end of the annuity) of all the cash
 flows including the terminal payment.}
 
-\item{round2int.digits}{Used only in \code{annuity.periods}. If the computed
+\item{round2int, round2int.digits}{Used only in \code{annuity.periods}.
+If round2int is TRUE and the computed
 number of periods is an integer when rounded to round2int.digits, then the
 rounded integer value is returned. With the default value of 3, 9.9996 is
 returned as 10, but 9.9994 and 9.39999999 are returned without any

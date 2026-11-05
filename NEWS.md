@@ -1,3 +1,7 @@
+# jrvFinance 1.4.4
+
+Fixed bugs: [irr returns NA for a valid -70% rate, even with a wider interval](https://github.com/jrvarma/jrvFinance/issues/4) [annuity.periods does not follow the rounding rule in its round2int.digits help](https://github.com/jrvarma/jrvFinance/issues/5)
+
 # jrvFinance 1.4.3
 
 Fixed bug: [immediate.start=TRUE has no effect on annuity.installment when given fv](https://github.com/jrvarma/jrvFinance/issues/2)

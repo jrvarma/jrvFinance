@@ -25,8 +25,6 @@
 ##'
 ##' @rdname annuity
 ##' @name annuity
-##' @aliases annuity.pv annuity.fv annuity.instalment annuity.periods
-##' annuity.rate annuity.instalment.breakup
 ##' @param rate The interest rate in decimal (0.10 or 10e-2 for 10\%)
 ##' @param n.periods The number of periods in the annuity.
 ##' @param instalment The instalment (cash flow) per period.
@@ -46,7 +44,8 @@
 ##' @param period.no Used only in \code{annuity.instalment.breakup}. This is the
 ##' period for which the instalment needs to be broken up into principal and
 ##' interest parts.
-##' @param round2int.digits Used only in \code{annuity.periods}. If the computed
+##' @param round2int,round2int.digits Used only in \code{annuity.periods}.
+##' If round2int is TRUE and the computed
 ##' number of periods is an integer when rounded to round2int.digits, then the
 ##' rounded integer value is returned. With the default value of 3, 9.9996 is
 ##' returned as 10, but 9.9994 and 9.39999999 are returned without any
@@ -105,7 +104,7 @@ annuity.instalment <- function(rate, n.periods=Inf, pv=if(missing(fv)) 1 else 0,
 annuity.periods <- function(rate, instalment=1, pv=if(missing(fv)) 1 else 0,
                             fv=0, terminal.payment=0,
                             immediate.start=FALSE, cf.freq=1, comp.freq=1,
-                            round2int.digits=3){
+                            round2int = TRUE, round2int.digits=3){
   if (rate == 0) return((pv + fv - terminal.payment) / instalment)
   r = equiv.rate(rate, comp.freq, cf.freq)/cf.freq
   ## if immediate start we remove the first instalment and
@@ -119,7 +118,8 @@ annuity.periods <- function(rate, instalment=1, pv=if(missing(fv)) 1 else 0,
   n <- -log(df) / log(1 + r) + if (immediate.start) 1 else 0
   ## if the result is close to an integer, then round to the integer
   ## the tolerance for this is given by round2int.digits
-  as.integer(n) + zapsmall(n - as.integer(n), round2int.digits)
+  roundit = round2int & (abs(n-round(n)) < 10^-round2int.digits)
+  ifelse(roundit, round(n), n)
 }
 
 ##' @rdname annuity

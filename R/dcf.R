@@ -62,9 +62,9 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
     if (sign(max(cf)) == sign(min(cf)))
         return(NA)
     fn <- function(r){
-        df <- exp(-r*cf.t)
+        df <- (1+r/comp.freq)^(-comp.freq*cf.t)
         list(value=as.numeric(crossprod(cf, df)),
-             gradient=-as.numeric(crossprod(cf*df,cf.t)))
+             gradient=-as.numeric(crossprod(cf*df,cf.t))/(1+r/comp.freq))
     }
     method <- match.arg(method)
     res <- NA
@@ -77,7 +77,7 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
     if(is.na(res)){
         warning(.irr.warning.msg(method))
     }
-    equiv.rate(res, from.freq=Inf, to.freq=comp.freq)
+    res
 }
 
 

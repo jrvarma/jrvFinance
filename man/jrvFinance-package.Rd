@@ -2,8 +2,8 @@
 % Please edit documentation in R/jrvFinance-package.R
 \docType{package}
 \name{jrvFinance-package}
-\alias{jrvFinance-package}
 \alias{jrvFinance}
+\alias{jrvFinance-package}
 \title{Basic Finance: NPV/IRR/annuities, bond pricing, Black Scholes}
 \description{
 This package implements the basic financial analysis functions
@@ -27,6 +27,15 @@ For more details, see the vignette
 The 30/360 day count was converted from C++ code in the QuantLib library.
 The Newton Raphson solver was converted from C++ code in the Boost library
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jrvarma/jrvFinance}
+  \item Report bugs at \url{https://github.com/jrvarma/jrvFinance/issues}
+}
+
+}
 \author{
 Prof. Jayanth R. Varma \email{jrvarma@iima.ac.in}
 }
+\keyword{internal}

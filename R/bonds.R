@@ -13,9 +13,6 @@
 ##'
 ##' @rdname bonds
 ##' @name bonds
-##' @aliases bond.price bond.TCF
-##' bond.yield bond.duration bonds
-##' bond.prices bond.durations bond.yields
 ##' @param settle The settlement date for which the bond is traded. Can be a
 ##' character string or any object that can be converted into date using
 ##' \code{\link{as.Date}}.

@@ -3,12 +3,12 @@
 \name{bonds}
 \alias{bonds}
 \alias{bond.price}
-\alias{bond.TCF}
 \alias{bond.yield}
 \alias{bond.duration}
+\alias{bond.TCF}
 \alias{bond.prices}
-\alias{bond.durations}
 \alias{bond.yields}
+\alias{bond.durations}
 \title{Bond pricing using yield to maturity.}
 \usage{
 bond.price(
