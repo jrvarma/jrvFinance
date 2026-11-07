@@ -118,7 +118,7 @@ annuity.periods <- function(rate, instalment=1, pv=if(missing(fv)) 1 else 0,
   n <- -log(df) / log(1 + r) + if (immediate.start) 1 else 0
   ## if the result is close to an integer, then round to the integer
   ## the tolerance for this is given by round2int.digits
-  roundit = round2int & (abs(n-round(n)) < 10^-round2int.digits)
+  roundit = round2int & (abs(n-round(n)) < 0.5 * 10^-round2int.digits)
   ifelse(roundit, round(n), n)
 }
 
