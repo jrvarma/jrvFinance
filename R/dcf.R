@@ -62,9 +62,17 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
     if (sign(max(cf)) == sign(min(cf)))
         return(NA)
     fn <- function(r){
-        df <- (1+r/comp.freq)^(-comp.freq*cf.t)
+        ## (1+r/comp.freq)^(-comp.freq*cf.t) is 1 for any r when comp.freq
+        ## is Inf, so continuous compounding needs exp(-r*cf.t)
+        if (is.infinite(comp.freq)) {
+            df <- exp(-r*cf.t)
+            grad.factor <- 1
+        } else {
+            df <- (1+r/comp.freq)^(-comp.freq*cf.t)
+            grad.factor <- 1/(1+r/comp.freq)
+        }
         list(value=as.numeric(crossprod(cf, df)),
-             gradient=-as.numeric(crossprod(cf*df,cf.t))/(1+r/comp.freq))
+             gradient=-as.numeric(crossprod(cf*df,cf.t))*grad.factor)
     }
     method <- match.arg(method)
     res <- NA
