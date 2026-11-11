@@ -62,12 +62,18 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
     if (sign(max(cf)) == sign(min(cf)))
         return(NA)
     fn <- function(r){
-        df <- (1+r/comp.freq)^(-comp.freq*cf.t)
+        df <- (1+r)^(-cf.t)
         list(value=as.numeric(crossprod(cf, df)),
-             gradient=-as.numeric(crossprod(cf*df,cf.t))/(1+r/comp.freq))
+             gradient=-as.numeric(crossprod(cf*df,cf.t))/(1+r))
     }
     method <- match.arg(method)
     res <- NA
+    if (! is.null(interval)){
+        interval[1] <- equiv.rate(interval[1], comp.freq, 1)
+        interval[2] <- equiv.rate(interval[2], comp.freq, 1)
+    }
+    if (! is.null(r.guess))
+        r.guess <- equiv.rate(r.guess, comp.freq, 1)
     tryCatch(
         res <- irr.solve(f=fn, interval=interval, r.guess=r.guess, 
                          toler = toler, convergence = convergence,
@@ -77,7 +83,7 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
     if(is.na(res)){
         warning(.irr.warning.msg(method))
     }
-    res
+    equiv.rate(res, 1, comp.freq)
 }
 
 
@@ -98,8 +104,12 @@ irr <- function(cf, interval = NULL, cf.freq = 1, comp.freq = 1,
 ##'     compounding.
 ##' @export
 equiv.rate <- function(rate, from.freq = 1, to.freq = 1){
+  ## if rate_per_period is less than -1, then many dcf calculations are undefined
+  ## both (1+rate_per_period)^t and log(1+rate_per_period) become NaN
+  ## so we set rate_per_period equal to -1 in this case
+  rate_per_period <- max(-1, rate/from.freq)
   cc.rate <- ifelse(from.freq == Inf, rate,
-                    log(1+rate/from.freq)*from.freq)
+                    log(1+rate_per_period)*from.freq)
   if (to.freq == Inf) cc.rate else (exp(cc.rate/to.freq)-1)*to.freq
 }
 
